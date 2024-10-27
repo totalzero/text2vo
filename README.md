@@ -1,35 +1,73 @@
 # Text2vo
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/text2vo`. To experiment with that code, run `bin/console` for an interactive prompt.
+Text2vo is a Ruby gem that allows you to convert text to speech using the VoiceOver application on macOS. It provides a simple interface to send text and have it spoken aloud.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+You can install the gem by adding it to your Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
+```ruby
+gem 'text2vo'
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+And then running:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+```bash
+bundle install
+```
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Or you can install it directly using:
+
+```bash
+gem install text2vo
+```
+
+If you are working on the gem locally, you can build and install it like this:
+
+```bash
+gem build text2vo.gemspec
+gem install text2vo-0.1.0.gem
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Sending Text to VoiceOver
 
-## Development
+To send text to the VoiceOver application, use the `Text2vo.send` method:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+require 'text2vo'
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Text2vo.send("Hello, world!")
+```
+
+### Extending String Class
+
+You can also extend the `String` class to easily convert strings to speech:
+
+```ruby
+require 'text2vo'
+
+"Hello, world!".say_it
+```
+
+This will call the `say_it` method on the string and send it to the VoiceOver application.
+
+## Requirements
+
+- macOS (as it uses the VoiceOver application)
+- Ruby (2.0 or higher)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/text2vo.
+Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request.
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This gem is available as open-source under the MIT License.
